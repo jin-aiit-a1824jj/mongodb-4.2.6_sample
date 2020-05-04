@@ -1,0 +1,24 @@
+https://qiita.com/FukuharaYohei/items/d109f5c3f5dce0d972e4
+
+sudo service mongod start
+
+mongod
+mongod --dbpath <./db> --logpath <./log>
+db.adminCommand({shutdown: 1, force: true})
+
+https://docs.mongodb.com/manual/reference/configuration-options/
+
+mongod --config <./mongod.cfg>
+
+mongo 127.0.0.1:27017/booklog ./sample-data/insert.js 
+mongo
+use booklog
+show collections
+exit
+
+mongo 127.0.0.1:27017/booklog ./sample-data/drop.js 
+use booklog
+show collections
+exit
+
+
