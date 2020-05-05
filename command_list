@@ -87,3 +87,11 @@ db.users.createIndex({email:1}, {name:"IX_EMAIL"})
 db.users.getIndexes()
 db.users.dropIndex("IX_EMAIL")
 
+mongo
+use booklog
+db.users.createIndex({email:1}, {name:"IX_EMAIL", unique: true})
+db.users.getIndexes()
+db.users.insert({name: "abc", email: "tsuyoshi.tanaka@sample.co.jp"})
+db.users.dropIndex("IX_EMAIL")
+db.users.insert({name: "abc", email: "tsuyoshi.tanaka@sample.co.jp"})
+db.users.remove({name: "abc", email: "tsuyoshi.tanaka@sample.co.jp"})
