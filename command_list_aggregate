@@ -106,3 +106,22 @@ use booklog
 db.books.aggregate([ 
   { $group: { _id: 0, avg: { $avg: "$price"}, stddev: {$stdDevPop: "$price"}}}
 ])
+
+
+mongo
+use booklog
+db.books.aggregate([
+  { $sort: { launch: -1 }}, 
+  { $project: { _id: 0, title: 1, launch: 1}}
+])
+db.books.aggregate([
+  { $sort: { launch: -1 }}, 
+  { $project: { _id: 0, title: 1, launch: 1}},
+  { $skip: 2 }
+])
+db.books.aggregate([
+  { $sort: { launch: -1 }}, 
+  { $project: { _id: 0, title: 1, launch: 1}},
+  { $skip: 2 },
+  { $limit: 3 }
+])
