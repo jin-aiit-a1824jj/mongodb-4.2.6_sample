@@ -108,3 +108,10 @@ db.books.find({price: {$lte: 454}})
 db.books.find({publisher: {$in: ["講話社", "角河書店"]}})
 db.books.find({launch: {$gt: ISODate("2003-01-01T00:00:00+09:00")}})
 
+mongo
+use booklog
+db.books.find({$and:[{publisher: "新朝社"},{price: {$gt: 300}}]})
+db.books.find({$or:[{publisher: "新朝社"},{publisher: "角河書店"}]})
+db.books.find({ price: { $not: { $gt: 500}}})
+db.books.find({publisher: {$not: /新朝社/}})
+
