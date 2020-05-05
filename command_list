@@ -115,3 +115,4 @@ db.books.find({$or:[{publisher: "新朝社"},{publisher: "角河書店"}]})
 db.books.find({ price: { $not: { $gt: 500}}})
 db.books.find({publisher: {$not: /新朝社/}})
 
+
