@@ -70,7 +70,14 @@ db.books.count({ publisher: "新朝社"})
 db.books.find({ publisher: "新朝社"}).count()
 
 mongo
-user booklog
+use booklog
 db.books.find().sort({price: 1})
 db.books.find().sort({price: -1})
 db.books.find({publisher: "新朝社"}).sort({launch: -1})
+
+mongo
+use booklog
+db.books.find().sort({price: -1})
+db.books.find().sort({price: -1}).skip(2)
+db.books.find().sort({price: -1}).skip(2).limit(3)
+
