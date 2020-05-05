@@ -99,3 +99,10 @@ db.books.aggregate([
   }, min: { $min: "$price"}, max: {$max: "$price"}}},
   { $sort: { _id: -1}}
 ])
+
+
+mongo
+use booklog
+db.books.aggregate([ 
+  { $group: { _id: 0, avg: { $avg: "$price"}, stddev: {$stdDevPop: "$price"}}}
+])
