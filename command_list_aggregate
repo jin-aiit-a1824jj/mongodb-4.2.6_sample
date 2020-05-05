@@ -1,0 +1,17 @@
+mongo
+use booklog
+db.books.aggregate([
+  { $match: {publisher: "講話社"}}
+])
+db.books.aggregate([
+  { $match: {publisher: { $ne: "講話社"}}}
+])
+db.books.aggregate([
+  { $match: { price: {$gt: 500}}}
+])
+db.books.aggregate([
+  { $match: { price: {$lt: 500}}}
+])
+db.books.aggregate([
+  { $match: { publisher: /社/g}}
+])
