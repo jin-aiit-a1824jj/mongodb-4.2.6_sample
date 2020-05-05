@@ -43,3 +43,14 @@ db.books.aggregate([
   {$project: {_id: 0, title: 1, price: 1}},
   {$sort: {price: -1}}
 ])
+
+
+mongo
+use booklog
+db.books.aggregate([
+  {$count: "count"}
+])
+db.books.aggregate([
+  {$match: {publisher: "講話社"}},
+  {$count: "count"}
+])
