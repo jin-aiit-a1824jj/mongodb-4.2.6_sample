@@ -33,3 +33,13 @@ show dbs
 db.createCollection("test")
 db.dropDatabase()
 show dbs
+
+mongo 
+use sample
+db.createCollection("test")
+show collections
+db.test.renameCollection("new_test", true)
+show collection
+db.new_test.drop()
+db.new_test.drop()
+
