@@ -362,3 +362,20 @@ db.users.update(
     ]
   }
 )
+
+
+mongo
+use booklog
+db.users.update(
+  {name: "田中 剛"},
+  {
+    $pop: {bookshelf: 1}
+  }
+)
+
+db.users.update(
+  {name: "田中 剛"},
+  {
+    $pull: {bookshelf: {status: "読了"}}
+  }
+)
