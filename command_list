@@ -120,3 +120,14 @@ mongo
 use booklog
 db.books.find({publisher: {$regex: /社/g}})
 db.books.find({publisher: /社/g})
+
+mongo
+use booklog
+db.authors.find({ dob: { $exists: true}})
+db.authors.find({ dob: { $type: "string"}})
+db.authors.find({
+  $and:[ 
+    { dob: { $exists: true}},
+    { dob: {$not: { $type: "date"}}} 
+  ]
+})
