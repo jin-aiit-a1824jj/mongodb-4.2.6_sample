@@ -79,3 +79,23 @@ db.books.aggregate([
   { $group: { _id: "$publisher", cost: { $sum: "$price"}, page: {$sum: "$pages"}}},
   { $project: { cpp: { $multiply: [{ $divide: ["$cost","$page"]}, 100] } } }
 ])
+
+
+mongo
+use booklog
+db.books.aggregate([ 
+  { $group: { _id: "$publisher", min: { $min: "$price"}, max: {$max: "$price"}}}
+])
+db.books.aggregate([ 
+  { $group: { _id: {
+    year: { $year: "$launch"},
+    month: {$month: "$launch"},
+  }, min: { $min: "$price"}, max: {$max: "$price"}}}
+])
+db.books.aggregate([ 
+  { $group: { _id: {
+    year: { $year: "$launch"},
+    month: {$month: "$launch"},
+  }, min: { $min: "$price"}, max: {$max: "$price"}}},
+  { $sort: { _id: -1}}
+])
