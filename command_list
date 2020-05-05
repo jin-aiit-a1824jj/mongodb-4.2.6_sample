@@ -207,3 +207,27 @@ db.users.update(
   {name: "田中 剛"},
   {$set: { password: "hoge"}, $currentDate: {updated: true}}
 )
+
+
+mongo
+use booklog
+db.reviews.update(
+  {},
+  {$inc: {score: 1}},
+  {multi: true}
+)
+db.reviews.update(
+  {},
+  {$inc: {score: -1}},
+  {multi: true}
+)
+db.reviews.update(
+  {},
+  {$mul: {score: 2}},
+  {multi: true}
+)
+db.reviews.update(
+  {},
+  {$mul: {score: 0.5}},
+  {multi: true}
+)
