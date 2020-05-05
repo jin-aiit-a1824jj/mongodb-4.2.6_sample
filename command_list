@@ -231,3 +231,104 @@ db.reviews.update(
   {$mul: {score: 0.5}},
   {multi: true}
 )
+
+
+
+mongo
+use booklog
+db.users.update(
+  {name: "田中 剛"},
+  {
+    $push:{
+      bookshelf:{
+        book: "書籍１",
+        registered: ISODate()
+      }
+    }
+  }
+)
+db.users.find({name: "田中 剛"}).pretty()
+db.users.update(
+  {name: "田中 剛"},
+  {
+    $push:{
+      bookshelf:{
+        $each:[
+          {
+            book: "書籍２",
+            registered: ISODate("2018-07-12T12:00:00+09:00")
+          },
+          {
+            book: "書籍３",
+            registered: ISODate("2018-06-28T12:00:00+09:00")
+          }
+        ]
+      }
+    }
+  }
+)
+
+db.users.update(
+  {name: "田中 剛"},
+  {
+    $push:{
+      bookshelf:{
+        $each:[],
+        $sort:{ registered: -1}
+      }
+    }
+  }
+)
+
+db.users.update(
+  {name: "田中 剛"},
+  {
+    $push:{
+      bookshelf:{
+        $each:[],
+        $slice: 5
+      }
+    }
+  }
+)
+
+db.users.update(
+  {name: "田中 剛"},
+  {
+    $push:{
+      bookshelf:{
+        $each:[
+          {
+            book: "書籍x",
+            registered: ISODate("2018-08-01T12:00:00+09:00")
+          }
+        ],
+        $position: 0
+      }
+    }
+  }
+)
+
+db.users.update(
+  {name: "田中 剛"},
+  {
+    $push:{
+      bookshelf:{
+        $each:[
+          {
+            book: "組み合わせ書籍（上）",
+            registered: ISODate("2018-07-31T12:00:00+09:00")
+          },
+          {
+            book: "組み合わせ書籍（上）",
+            registered: ISODate("2018-07-31T12:00:00+09:00")
+          }
+        ],
+        $sort:{ registered: -1},
+        $slice: 5
+      }
+    }
+  }
+)
+
+
