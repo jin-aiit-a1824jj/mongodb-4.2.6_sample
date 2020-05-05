@@ -63,7 +63,14 @@ db.users.update({
 db.users.find({email: "sachiko.sato@sample.co.jp"})
 db.users.remove({email: "sachiko.sato@sample.co.jp"})
 
+mongo
 use booklog
 db.books.count()
 db.books.count({ publisher: "新朝社"})
 db.books.find({ publisher: "新朝社"}).count()
+
+mongo
+user booklog
+db.books.find().sort({price: 1})
+db.books.find().sort({price: -1})
+db.books.find({publisher: "新朝社"}).sort({launch: -1})
