@@ -15,3 +15,20 @@ db.books.aggregate([
 db.books.aggregate([
   { $match: { publisher: /社/g}}
 ])
+
+
+mongo
+use booklog
+db.books.aggregate([
+  {$match: {publisher: "講話社"}},
+  {$project: {_id: 0}}
+])
+db.books.aggregate([
+  {$match: {publisher: "講話社"}},
+  {$project: {_id: 0, title: 1}}
+])
+db.books.aggregate([
+  {$match: {publisher: "講話社"}},
+  {$project: {_id: 0, title: 0}}
+])
+
