@@ -116,3 +116,7 @@ db.books.find({ price: { $not: { $gt: 500}}})
 db.books.find({publisher: {$not: /新朝社/}})
 
 
+mongo
+use booklog
+db.books.find({publisher: {$regex: /社/g}})
+db.books.find({publisher: /社/g})
