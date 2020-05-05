@@ -81,3 +81,9 @@ db.books.find().sort({price: -1})
 db.books.find().sort({price: -1}).skip(2)
 db.books.find().sort({price: -1}).skip(2).limit(3)
 
+mongo
+use booklog
+db.users.createIndex({email:1}, {name:"IX_EMAIL"})
+db.users.getIndexes()
+db.users.dropIndex("IX_EMAIL")
+
