@@ -190,3 +190,12 @@ db.authors.update(
   {$unset: {dob: ""}}
 )
 db.authors.find({dob: null})
+
+
+mongo
+use booklog
+db.users.update(
+  {},
+  {$rename: { sex: "gender"}},
+  {multi: true}
+)
