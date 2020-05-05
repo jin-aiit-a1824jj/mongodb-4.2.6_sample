@@ -332,3 +332,33 @@ db.users.update(
 )
 
 
+mongo
+use booklog
+db.users.update(
+  {name: "田中 剛"},
+  {
+    $set:{
+      "bookshelf.$[item].status": "終了"
+    }
+  },
+  {
+    arrayFilters:[
+      {"item.book": ObjectId("5b6f033a6c25c37f77e6917d")}
+    ]
+  }
+)
+
+db.users.update(
+  {name: "田中 剛"},
+  {
+    $set:{
+      "bookshelf.$[item].status": "終了2",
+      "bookshelf.$[item].readed": ISODate()
+    }
+  },
+  {
+    arrayFilters:[
+      {"item.book": ObjectId("5b6f033a6c25c37f77e6917d")}
+    ]
+  }
+)
