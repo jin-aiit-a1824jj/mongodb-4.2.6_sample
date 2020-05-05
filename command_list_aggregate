@@ -54,3 +54,17 @@ db.books.aggregate([
   {$match: {publisher: "講話社"}},
   {$count: "count"}
 ])
+
+
+mongo
+use booklog
+db.books.aggregate([
+  { $group: { _id: "$publisher" }}
+])
+db.books.aggregate([
+  { $group: { _id: "$publisher", count: { $sum: 1} }}
+])
+db.books.aggregate([
+  { $group: { _id: "$publisher", count: { $sum: 1} }},
+  { $sort: {count: -1}}
+])
