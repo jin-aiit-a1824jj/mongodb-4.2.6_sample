@@ -43,3 +43,22 @@ show collection
 db.new_test.drop()
 db.new_test.drop()
 
+mongo
+use booklog
+show collections
+「
+db.users.insert({
+  email: "sachiko.sato@sample.co.jp",
+  password: "P@ssw0rd",
+  name: "佐藤　幸子"
+})
+」
+db.users.find()
+「
+db.users.update({
+  email: "sachiko.sato@sample.co.jp",
+}, {$set: {password: "querty"},
+}, {multi: true})
+」
+db.users.find({email: "sachiko.sato@sample.co.jp"})
+db.users.remove({email: "sachiko.sato@sample.co.jp"})
