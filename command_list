@@ -22,3 +22,14 @@ show collections
 exit
 
 
+db
+show dbs
+db.dropDatabase()
+
+mongo
+use sample
+db
+show dbs
+db.createCollection("test")
+db.dropDatabase()
+show dbs
